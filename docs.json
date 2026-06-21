@@ -8,7 +8,10 @@
     "light": "#26BD6C",
     "dark": "#166E3F"
   },
-  "favicon": "/favicon.ico",
+  "favicon": {
+    "light": "/images/PUMPevmLogo(1).png",
+    "dark": "/images/PUMPevmLogo(1).png"
+  },
   "icons": {
     "library": "lucide"
   },
@@ -87,8 +90,8 @@
     ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/images/PUMPevmLogo(1).png",
+    "dark": "/images/PUMPevmLogo(1).png"
   },
   "navbar": {
     "links": [
