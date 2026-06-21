@@ -1,0 +1,75 @@
+---
+title: "Smart contract integration"
+description: "Read and write to launchpad bonding curve contracts with viem."
+icon: "file-code"
+---
+
+All examples use [viem](https://viem.sh). Replace `tokenAddress` with the bonding curve address of the token you are integrating with.
+
+## Get token information
+
+```ts
+import { createPublicClient, http } from 'viem';
+import { mainnet } from 'viem/chains';
+
+const client = createPublicClient({
+  chain: mainnet,
+  transport: http(),
+});
+
+const tokenDetails = await client.readContract({
+  address: tokenAddress,
+  abi: bondingCurveAbi,
+  functionName: 'getBondingCurveSettings',
+});
+```
+
+## Get current price
+
+```ts
+const price = await client.readContract({
+  address: tokenAddress,
+  abi: bondingCurveAbi,
+  functionName: 'getPriceForBuy',
+  args: [parseEther('0.1')],
+});
+```
+
+## Buy tokens
+
+```ts
+import { createWalletClient, custom } from 'viem';
+
+const walletClient = createWalletClient({
+  transport: custom(window.ethereum),
+});
+
+const hash = await walletClient.writeContract({
+  address: tokenAddress,
+  abi: bondingCurveAbi,
+  functionName: 'buy',
+  value: parseEther('1'),
+});
+```
+
+## Sell tokens
+
+```ts
+const hash = await walletClient.writeContract({
+  address: tokenAddress,
+  abi: bondingCurveAbi,
+  functionName: 'sell',
+  args: [parseEther('1000')],
+});
+```
+
+## Check phase
+
+```ts
+const currentPhase = await client.readContract({
+  address: tokenAddress,
+  abi: bondingCurveAbi,
+  functionName: 'currentPhase',
+});
+// 0 = Pre-Bond, 1 = Bonding, 2 = Finalized
+```

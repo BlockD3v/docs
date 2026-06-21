@@ -1,0 +1,53 @@
+---
+title: "Fair Launch Protocol"
+description: "The 4 phases that govern every token launch."
+icon: "list-ordered"
+---
+
+Every launch on pumpEVM.fun follows the same four-phase Fair Launch Protocol.
+
+## Phase 1: Pre-Bond
+
+Users may only **purchase** tokens from the bonding curve. Purchased tokens are locked and non-transferable until the curve is finalized. Early buyers receive the best pricing and large holders cannot dump at launch.
+
+| Action | Available |
+| --- | --- |
+| Buy tokens | Yes |
+| Sell tokens | No |
+| Transfer tokens | No |
+| View price | Yes |
+| View allocation | Yes |
+
+## Phase 2: Bonding
+
+Users may both **buy and sell** tokens. Fees apply only on sell transactions and scale with 24-hour volume. Graduation occurs when real ETH on the curve reaches **6.9 ETH**.
+
+### Dynamic sell fees
+
+| 24-Hour Volume | Sell Fee |
+| --- | --- |
+| \< \$10,000 | 0.1% |
+| 0.5% |  |
+| 1.0% |  |
+| 1.5% |  |
+| \> \$500,000 | 2.0% |
+
+## Phase 3: Finalized
+
+The token creator calls `finalizeCurve()` to migrate liquidity to Uniswap V3.
+
+- A Uniswap V3 pool is created with a **1% fee tier**.
+- **100% of Uniswap V3 fees** are directed to the token creator.
+- Pre-bond tokens become transferable.
+- All remaining tokens and ETH are deposited as liquidity.
+- Trading continues on Uniswap V3.
+
+## Phase 4: Distribution & Rewards
+
+Fee distribution on bonding curve sells:
+
+- **95%** to the token creator
+- **4%** to the protocol
+- **1%** to the top 5 token holders (distributed monthly)
+
+Top holders are determined by on-chain balance; rewards are automatic.

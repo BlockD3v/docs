@@ -1,0 +1,26 @@
+---
+title: "Contracts & audits"
+description: "Security posture, audits, and contract sources."
+icon: "shield-check"
+---
+
+All smart contracts are:
+
+- Open source.
+- Audited by **OpenZeppelin**.
+- Verified on Etherscan and other block explorers.
+- Immutable (no admin backdoors).
+- Rug-proof (liquidity locked on Uniswap V3).
+
+Contract addresses are available on our website and GitHub repository.
+
+## Contract surface
+
+| Contract | Purpose |
+| --- | --- |
+| Factory | Deploys new bonding curve tokens. |
+| Bonding Curve | Manages buy/sell, fees, and graduation. |
+| Token | ERC-20 launched via the factory. |
+| Lock | Holds pre-bond allocations until finalized. |
+| Perp | Perpetuals engine for trade.pumpevm.fun. |
+| Prediction | Settlement and CLOB integration. |

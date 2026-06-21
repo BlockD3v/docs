@@ -1,0 +1,79 @@
+---
+title: "CLOB WebSocket API"
+description: "Live order book, trades, and positions for prediction markets."
+icon: "plug-zap"
+---
+
+The CLOB client API is **live** and powered by Jump Protocol.
+
+## Endpoints
+
+| Channel | URL |
+| --- | --- |
+| Order book | `wss://api.pumpevm.fun/ws/v1/prediction/orderbook` |
+| Trades | `wss://api.pumpevm.fun/ws/v1/prediction/trades` |
+| Positions | `wss://api.pumpevm.fun/ws/v1/prediction/positions` |
+
+## Performance
+
+- Sub-millisecond latency.
+- 10,000\+ orders/second throughput.
+- MEV-resistant design.
+- Cross-chain order routing.
+- Fees: 0.02% maker, 0.05% taker.
+
+## Subscribe to an order book
+
+```json
+{
+  "type": "subscribe",
+  "channel": "prediction_orderbook",
+  "marketId": "0x..."
+}
+```
+
+## Order book update
+
+```json
+{
+  "type": "prediction_orderbook",
+  "data": {
+    "marketId": "0x...",
+    "outcome": "YES",
+    "bids": [["0.65", "1000"], ["0.64", "2000"]],
+    "asks": [["0.67", "500"], ["0.68", "1500"]]
+  }
+}
+```
+
+## Trade update
+
+```json
+{
+  "type": "prediction_trade",
+  "data": {
+    "marketId": "0x...",
+    "outcome": "YES",
+    "price": "0.66",
+    "size": "500",
+    "side": "buy",
+    "timestamp": "2025-06-20T12:00:00Z"
+  }
+}
+```
+
+## Position update
+
+```json
+{
+  "type": "prediction_position",
+  "data": {
+    "marketId": "0x...",
+    "outcome": "YES",
+    "size": "1500",
+    "entryPrice": "0.60",
+    "currentPrice": "0.66",
+    "pnl": "+90.00 puUSD"
+  }
+}
+```

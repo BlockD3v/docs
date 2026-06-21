@@ -1,0 +1,47 @@
+---
+title: "Bonding curve mechanics"
+description: "Constant-product math behind launchpad pricing."
+icon: "function-square"
+---
+
+The launchpad uses a virtual-reserve constant-product bonding curve. Price discovery is continuous between buys and sells until the curve graduates to Uniswap V3.
+
+## Parameters
+
+| Parameter | Value |
+| --- | --- |
+| Virtual ETH Reserve | 2.44 ETH |
+| Virtual Token Reserve | 1,073,000,191 tokens |
+| Total Token Supply | 1,000,000,000 tokens |
+| Pre-Bond Target | Configurable |
+| Graduation Threshold | 6.9 ETH |
+| Sell Fee | 0.1% – 2% (dynamic) |
+
+## Formula
+
+```text
+Price = (VirtualETH + RealETH) / (VirtualTokens + RealTokens)
+```
+
+Constant product is preserved on each trade:
+
+```text
+(VirtualETH + RealETH) * (VirtualTokens + RealTokens) = k
+```
+
+## How it works
+
+<Steps>
+  <Step title="Initial state">
+    Virtual ETH = 2.44, Virtual Tokens = 1,073,000,191, Real ETH = 0, Real Tokens = 0.
+  </Step>
+  <Step title="Buy">
+    Real ETH increases, Real Tokens increase — price rises along the curve.
+  </Step>
+  <Step title="Sell">
+    Real ETH decreases, Real Tokens decrease — price falls along the curve.
+  </Step>
+  <Step title="Graduation">
+    When Real ETH reaches **6.9 ETH**, the curve can be finalized and liquidity migrates to a Uniswap V3 1% pool.
+  </Step>
+</Steps>

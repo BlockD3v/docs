@@ -1,0 +1,24 @@
+---
+title: "REST API"
+description: "Tokens, markets, orders, and prediction endpoints (Q4 2026)."
+icon: "server"
+tag: "Q4 2026"
+---
+
+<Note>
+  The REST API is scheduled for **Q4 2026**. Endpoints below are illustrative and may change before launch.
+</Note>
+
+- **Base URL:** `https://api.pumpevm.fun/v1`
+- **Authentication:** Bearer token (API key)
+
+## Sample endpoints
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `GET` | `/tokens` | List all tokens |
+| `GET` | `/tokens/:address` | Get token details |
+| `POST` | `/tokens` | Create a token |
+| `GET` | `/markets` | List all markets |
+| `POST` | `/orders` | Place an order |
+| `GET` | `/prediction/markets` | List prediction markets |

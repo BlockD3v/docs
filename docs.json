@@ -1,8 +1,8 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "almond",
-  "name": "Product Guide",
-  "description": "Step-by-step guides for every product—platform setup, analytics, and integrations in one place.",
+  "name": "pumpEVM.fun",
+  "description": "Multi-chain onchain economy platform — token launches, spot & perpetual trading, and prediction markets.",
   "colors": {
     "primary": "#166E3F",
     "light": "#26BD6C",
@@ -19,59 +19,69 @@
     "options": ["copy", "view", "assistant", "mcp", "add-mcp"]
   },
   "navigation": {
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Home",
-          "icon": "house",
-          "href": "/"
-        },
-        {
-          "anchor": "Changelog",
-          "icon": "scroll-text",
-          "href": "https://www.mintlify.com/docs/changelog"
-        },
-        {
-          "anchor": "Help",
-          "icon": "life-buoy",
-          "href": "https://www.mintlify.com/docs/contact-support"
-        }
-      ]
-    },
     "directory": "card",
     "groups": [
       {
-        "group": "Platform",
-        "icon": "layers",
-        "expanded": true,
+        "group": "Get Started",
+        "icon": "rocket",
         "pages": [
-          "platform/quickstart",
-          "platform/key-concepts",
-          "platform/configuration/settings",
-          "platform/configuration/user-management",
-          "platform/administration/roles-permissions"
+          "introduction",
+          "architecture",
+          "quickstart"
         ]
       },
       {
-        "group": "Analytics",
-        "icon": "chart-bar",
-        "expanded": true,
+        "group": "Launchpad",
+        "icon": "sparkles",
         "pages": [
-          "analytics/quickstart",
-          "analytics/connect-data",
-          "analytics/dashboards/create-dashboard",
-          "analytics/reports/scheduled-reports"
+          "launchpad/overview",
+          "launchpad/fair-launch",
+          "launchpad/bonding-curve"
         ]
       },
       {
-        "group": "Integrations",
-        "icon": "plug",
-        "expanded": true,
+        "group": "Trading",
+        "icon": "candlestick-chart",
         "pages": [
-          "integrations/quickstart",
-          "integrations/authentication",
-          "integrations/connectors/crm",
-          "integrations/webhooks/configure"
+          "trading/overview",
+          "trading/spot",
+          "trading/perpetuals"
+        ]
+      },
+      {
+        "group": "Prediction Markets",
+        "icon": "trending-up",
+        "pages": [
+          "prediction/overview",
+          "prediction/market-makers",
+          "prediction/clob"
+        ]
+      },
+      {
+        "group": "Builder Programs",
+        "icon": "users",
+        "pages": [
+          "programs/overview",
+          "fees"
+        ]
+      },
+      {
+        "group": "Developers",
+        "icon": "code",
+        "pages": [
+          "developers/overview",
+          "developers/smart-contracts",
+          "developers/rest-api",
+          "developers/clob-websocket",
+          "developers/contracts-and-audits"
+        ]
+      },
+      {
+        "group": "Resources",
+        "icon": "book",
+        "pages": [
+          "resources/roadmap",
+          "resources/support"
         ]
       }
     ]
@@ -81,17 +91,30 @@
     "dark": "/logo/dark.svg"
   },
   "navbar": {
-    "links": [],
+    "links": [
+      {
+        "href": "https://app.pumpevm.fun",
+        "label": "Launchpad"
+      },
+      {
+        "href": "https://trade.pumpevm.fun",
+        "label": "Trade"
+      },
+      {
+        "href": "https://pred.pumpevm.fun",
+        "label": "Predict"
+      }
+    ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Launch App",
+      "href": "https://app.pumpevm.fun"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/yourcompany",
-      "linkedin": "https://linkedin.com/company/yourcompany"
+      "x": "https://x.com/pumpevmfun",
+      "github": "https://github.com/BlockD3v/launchpad"
     }
   }
 }
