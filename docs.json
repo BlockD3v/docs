@@ -4,9 +4,9 @@
   "name": "pumpEVM.fun",
   "description": "Multi-chain onchain economy platform — token launches, spot & perpetual trading, and prediction markets.",
   "colors": {
-    "primary": "#166E3F",
-    "light": "#26BD6C",
-    "dark": "#166E3F"
+    "primary": "#5FCB88",
+    "light": "#34ff93",
+    "dark": "#1d9957"
   },
   "favicon": {
     "light": "/images/PUMPevmLogo(1).png",
@@ -95,7 +95,8 @@
   },
   "logo": {
     "light": "/images/PUMPevmLogo(1).png",
-    "dark": "/images/PUMPevmLogo(1).png"
+    "dark": "/images/PUMPevmLogo(1).png",
+    "href": "https://pumpevmfun.mintlify.app/introduction"
   },
   "navbar": {
     "links": [
@@ -120,8 +121,10 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/pumpevmfun",
-      "github": "https://github.com/BlockD3v/launchpad"
+      "x": "https://x.com/pumpevmfun"
     }
+  },
+  "thumbnails": {
+    "background": "/images/pump-fun-logo-png_seeklogo-654284.png"
   }
 }
