@@ -25,15 +25,6 @@
     "directory": "card",
     "groups": [
       {
-        "group": "Get Started",
-        "icon": "rocket",
-        "pages": [
-          "introduction",
-          "architecture",
-          "quickstart"
-        ]
-      },
-      {
         "group": "Launchpad",
         "icon": "sparkles",
         "pages": [
