@@ -1,0 +1,120 @@
+---
+title: "WebSocket API"
+description: "Channels, subscriptions, and streaming messages for the CLOB."
+icon: "plug-zap"
+---
+
+## Connection
+
+**Endpoint**
+
+```text
+wss://api.pumpevm.fun/ws/v1/prediction/orderbook
+```
+
+**Authentication**
+
+```text
+Authorization: Bearer <api_key>
+```
+
+## Channels
+
+| Channel | Description | Payload |
+| --- | --- | --- |
+| `orderbook` | Real-time order book updates | Bids, asks |
+| `trades` | Live trade executions | Trade details |
+| `positions` | User position updates | Position info |
+| `account` | Account balance updates | Balance, P&L |
+
+## Subscribe
+
+```json
+{
+  "type": "subscribe",
+  "channel": "orderbook",
+  "marketId": "0x...",
+  "outcome": "YES"
+}
+```
+
+## Unsubscribe
+
+```json
+{
+  "type": "unsubscribe",
+  "channel": "orderbook",
+  "marketId": "0x..."
+}
+```
+
+## Response messages
+
+### Order book update
+
+```json
+{
+  "type": "orderbook",
+  "data": {
+    "marketId": "0x...",
+    "outcome": "YES",
+    "bids": [["0.65", "1000"], ["0.64", "2000"], ["0.63", "1500"]],
+    "asks": [["0.67", "500"], ["0.68", "1500"], ["0.69", "2000"]],
+    "lastPrice": "0.66",
+    "timestamp": "2025-06-20T12:00:00Z"
+  }
+}
+```
+
+### Trade
+
+```json
+{
+  "type": "trade",
+  "data": {
+    "marketId": "0x...",
+    "outcome": "YES",
+    "price": "0.66",
+    "size": "500",
+    "side": "buy",
+    "makerFee": "0.02",
+    "takerFee": "0.05",
+    "timestamp": "2025-06-20T12:00:00Z",
+    "txHash": "0x..."
+  }
+}
+```
+
+### Position update
+
+```json
+{
+  "type": "position",
+  "data": {
+    "marketId": "0x...",
+    "outcome": "YES",
+    "size": "1500",
+    "entryPrice": "0.60",
+    "currentPrice": "0.66",
+    "unrealizedPnl": "+90.00",
+    "realizedPnl": "+45.00",
+    "timestamp": "2025-06-20T12:00:00Z"
+  }
+}
+```
+
+### Account update
+
+```json
+{
+  "type": "account",
+  "data": {
+    "balance": "10000.00",
+    "available": "8500.00",
+    "locked": "1500.00",
+    "totalPnl": "+250.00",
+    "totalTrades": "127",
+    "timestamp": "2025-06-20T12:00:00Z"
+  }
+}
+```

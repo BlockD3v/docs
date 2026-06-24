@@ -1,0 +1,36 @@
+---
+title: "Errors & rate limits"
+description: "Error codes, response format, and per-endpoint throttling."
+icon: "triangle-alert"
+---
+
+## Error response format
+
+```json
+{
+  "type": "error",
+  "data": {
+    "code": "INSUFFICIENT_BALANCE",
+    "message": "Insufficient balance. Required: 1000.00, Available: 500.00"
+  }
+}
+```
+
+## Error codes
+
+| Code | Description | Resolution |
+| --- | --- | --- |
+| `INSUFFICIENT_BALANCE` | Insufficient USDC balance | Deposit more funds |
+| `ORDER_NOT_FOUND` | Order does not exist | Verify `orderId` |
+| `INVALID_MARKET` | Invalid market ID | Check market address |
+| `ORDER_EXCEEDS_LIMIT` | Order size exceeds limit | Reduce order size |
+| `RATE_LIMITED` | Too many requests | Slow down |
+
+## Rate limits
+
+| Endpoint | Limit | Window |
+| --- | --- | --- |
+| Order placement | 100 | 1 second |
+| Order cancellation | 100 | 1 second |
+| Order book requests | 1,000 | 1 minute |
+| Trade history | 100 | 1 minute |

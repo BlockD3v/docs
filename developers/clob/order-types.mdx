@@ -1,0 +1,89 @@
+---
+title: "Order types"
+description: "Limit, market, stop-loss, and take-profit orders on the CLOB."
+icon: "list"
+---
+
+The CLOB supports four order types across all prediction markets.
+
+## Limit orders
+
+Limit orders specify a price at which to buy or sell. They rest in the order book until matched or cancelled.
+
+**Buy limit**
+
+```json
+{
+  "type": "limit",
+  "side": "buy",
+  "market": "BTC-USD-PRED",
+  "price": "65000.00",
+  "size": "1.5",
+  "outcome": "YES"
+}
+```
+
+**Sell limit**
+
+```json
+{
+  "type": "limit",
+  "side": "sell",
+  "market": "ETH-USD-PRED",
+  "price": "3200.50",
+  "size": "2.0",
+  "outcome": "NO"
+}
+```
+
+## Market orders
+
+Market orders execute immediately at the best available price.
+
+```json
+{
+  "type": "market",
+  "side": "buy",
+  "market": "BTC-USD-PRED",
+  "size": "1.0",
+  "outcome": "YES"
+}
+```
+
+## Stop-loss orders
+
+Stop-loss orders trigger a market order when a specified price is reached.
+
+```json
+{
+  "type": "stop-loss",
+  "side": "sell",
+  "market": "ETH-USD-PRED",
+  "triggerPrice": "3100.00",
+  "size": "2.0",
+  "outcome": "YES"
+}
+```
+
+## Take-profit orders
+
+Take-profit orders trigger a market order when a profit target is hit.
+
+```json
+{
+  "type": "take-profit",
+  "side": "sell",
+  "market": "BTC-USD-PRED",
+  "triggerPrice": "68000.00",
+  "size": "1.0",
+  "outcome": "YES"
+}
+```
+
+## Fees
+
+| Fee | Amount | Description |
+| --- | --- | --- |
+| Maker | 0.02% | Providing liquidity (resting limit orders). |
+| Taker | 0.05% | Taking liquidity (market or marketable orders). |
+| Settlement | 0.5% | On market settlement. |

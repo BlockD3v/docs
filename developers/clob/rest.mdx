@@ -1,0 +1,76 @@
+---
+title: "REST endpoints"
+description: "REST API surface for the CLOB (coming Q4 2026)."
+tag: "Q4 2026"
+icon: "server"
+---
+
+<Note>
+  The REST API for the CLOB is scheduled for **Q4 2026**. WebSocket access is live today — see the [WebSocket API](/developers/clob/websocket).
+</Note>
+
+## Get order book (public)
+
+```text
+GET /v1/prediction/orderbook/{marketId}
+```
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `marketId` | string | Market address |
+| `outcome` | string | `YES` or `NO` |
+| `depth` | integer | Number of levels (default: 10) |
+
+**Response**
+
+```json
+{
+  "marketId": "0x...",
+  "outcome": "YES",
+  "bids": [["0.65", "1000"], ["0.64", "2000"]],
+  "asks": [["0.67", "500"], ["0.68", "1500"]]
+}
+```
+
+## Place order
+
+```text
+POST /v1/prediction/order
+```
+
+**Body**
+
+```json
+{
+  "marketId": "0x...",
+  "outcome": "YES",
+  "side": "buy",
+  "orderType": "limit",
+  "price": "0.65",
+  "size": "1000"
+}
+```
+
+## Cancel order
+
+```text
+DELETE /v1/prediction/order/{orderId}
+```
+
+## Get positions
+
+```text
+GET /v1/prediction/positions
+```
+
+## Get trade history
+
+```text
+GET /v1/prediction/trades
+```
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `marketId` | string | Filter by market |
+| `outcome` | string | Filter by outcome |
+| `limit` | integer | Number of trades (default: 50) |

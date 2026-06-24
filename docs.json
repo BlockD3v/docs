@@ -56,7 +56,6 @@
         "icon": "trending-up",
         "pages": [
           "prediction/overview",
-          "prediction/market-makers",
           "prediction/clob"
         ]
       },
@@ -75,7 +74,21 @@
           "developers/overview",
           "developers/smart-contracts",
           "developers/rest-api",
-          "developers/clob-websocket",
+          {
+            "group": "CLOB (Jump Protocol)",
+            "icon": "zap",
+            "tag": "Q4 2026",
+            "pages": [
+              "developers/clob/overview",
+              "developers/clob/order-types",
+              "developers/clob/websocket",
+              "developers/clob/order-management",
+              "developers/clob/market-data",
+              "developers/clob/rest",
+              "developers/clob/integration",
+              "developers/clob/errors"
+            ]
+          },
           "developers/contracts-and-audits"
         ]
       },

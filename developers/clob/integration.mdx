@@ -1,0 +1,123 @@
+---
+title: "Integration guide"
+description: "Connect, subscribe, and trade on the CLOB from JavaScript or TypeScript."
+icon: "code"
+---
+
+## Install
+
+```bash
+npm install ws @types/ws
+```
+
+## JavaScript: browser WebSocket
+
+```javascript
+const ws = new WebSocket('wss://api.pumpevm.fun/ws/v1/prediction/orderbook');
+
+// Subscribe to order book
+ws.onopen = () => {
+  ws.send(JSON.stringify({
+    type: 'subscribe',
+    channel: 'orderbook',
+    marketId: '0x...',
+    outcome: 'YES',
+  }));
+};
+
+// Handle messages
+ws.onmessage = (event) => {
+  const data = JSON.parse(event.data);
+
+  switch (data.type) {
+    case 'orderbook':
+      console.log('Order Book:', data.data);
+      break;
+    case 'trade':
+      console.log('Trade Executed:', data.data);
+      break;
+    case 'position':
+      console.log('Position Updated:', data.data);
+      break;
+  }
+};
+
+function placeLimitOrder(marketId, outcome, side, price, size) {
+  ws.send(JSON.stringify({
+    type: 'place_order',
+    data: { marketId, outcome, side, orderType: 'limit', price, size },
+  }));
+}
+
+function placeMarketOrder(marketId, outcome, side, size) {
+  ws.send(JSON.stringify({
+    type: 'place_order',
+    data: { marketId, outcome, side, orderType: 'market', size },
+  }));
+}
+
+function cancelOrder(orderId) {
+  ws.send(JSON.stringify({
+    type: 'cancel_order',
+    data: { orderId },
+  }));
+}
+```
+
+## TypeScript: Node.js client
+
+```typescript
+import WebSocket from 'ws';
+
+const ws = new WebSocket('wss://api.pumpevm.fun/ws/v1/prediction/orderbook', {
+  headers: {
+    Authorization: 'Bearer YOUR_API_KEY',
+  },
+});
+
+ws.on('open', () => {
+  console.log('Connected to CLOB WebSocket');
+});
+
+ws.on('message', (data) => {
+  const message = JSON.parse(data.toString());
+  console.log('Received:', message);
+});
+
+function subscribeToMarket(marketId: string, outcome: string) {
+  ws.send(JSON.stringify({
+    type: 'subscribe',
+    channel: 'orderbook',
+    marketId,
+    outcome,
+  }));
+}
+
+function placeOrder(
+  marketId: string,
+  outcome: string,
+  side: 'buy' | 'sell',
+  orderType: 'limit' | 'market',
+  price?: number,
+  size?: number,
+) {
+  const payload: any = {
+    type: 'place_order',
+    data: { marketId, outcome, side, orderType },
+  };
+
+  if (orderType === 'limit') payload.data.price = price;
+  if (size) payload.data.size = size;
+
+  ws.send(JSON.stringify(payload));
+}
+```
+
+## Best practices
+
+- **Use limit orders** to protect against unfavorable price movements.
+- **Monitor the order book** to understand liquidity before placing orders.
+- **Respect rate limits** — see [Errors & rate limits](/developers/clob/errors).
+- **Handle errors gracefully** with retry logic for transient failures.
+- **Keep the WebSocket alive** with ping/pong and automatic reconnection.
+- **Test on Sepolia first** before deploying to mainnet.

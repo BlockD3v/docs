@@ -1,0 +1,122 @@
+---
+title: "Market data"
+description: "Order books, depth, and market summaries."
+icon: "bar-chart"
+---
+
+## Full order book
+
+**Request**
+
+```json
+{
+  "type": "get_orderbook",
+  "data": {
+    "marketId": "0x..."
+  }
+}
+```
+
+**Response**
+
+```json
+{
+  "type": "orderbook_response",
+  "data": {
+    "marketId": "0x...",
+    "bids": [["0.65", "1000"], ["0.64", "2000"]],
+    "asks": [["0.67", "500"], ["0.68", "1500"]],
+    "lastUpdate": "2025-06-20T12:00:00Z"
+  }
+}
+```
+
+## Depth
+
+**Request**
+
+```json
+{
+  "type": "get_depth",
+  "data": {
+    "marketId": "0x...",
+    "outcome": "YES",
+    "levels": 10
+  }
+}
+```
+
+**Response**
+
+```json
+{
+  "type": "depth_response",
+  "data": {
+    "marketId": "0x...",
+    "outcome": "YES",
+    "bids": [["0.65", "1000"], ["0.64", "2000"]],
+    "asks": [["0.67", "500"], ["0.68", "1500"]]
+  }
+}
+```
+
+## Market summary
+
+**Request**
+
+```json
+{
+  "type": "market_summary",
+  "data": {
+    "marketId": "0x..."
+  }
+}
+```
+
+**Response**
+
+```json
+{
+  "type": "market_summary_response",
+  "data": {
+    "marketId": "0x...",
+    "outcome": "YES",
+    "lastPrice": "0.66",
+    "high24h": "0.70",
+    "low24h": "0.60",
+    "volume24h": "100000",
+    "openInterest": "50000",
+    "timestamp": "2025-06-20T12:00:00Z"
+  }
+}
+```
+
+## Market list
+
+**Request**
+
+```json
+{
+  "type": "market_list"
+}
+```
+
+**Response**
+
+```json
+{
+  "type": "market_list_response",
+  "data": {
+    "markets": [
+      {
+        "marketId": "0x...",
+        "name": "Bitcoin Price > $65,000",
+        "outcomes": ["YES", "NO"],
+        "currentPrice": "0.66",
+        "volume": "100000",
+        "openInterest": "50000"
+      }
+    ]
+  }
+}
+```
