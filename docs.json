@@ -126,5 +126,12 @@
   },
   "thumbnails": {
     "background": "/images/pump-fun-logo-png_seeklogo-654284.png"
+  },
+  "errors": {
+    "404": {
+      "redirect": false,
+      "title": "Page does not exist",
+      "description": "I mean where are you? this page doesn't exist and why are you here? you good?"
+    }
   }
 }
