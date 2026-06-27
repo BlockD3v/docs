@@ -94,8 +94,8 @@
     ]
   },
   "logo": {
-    "light": "/images/PUMPevmLogo(1)(1).png",
-    "dark": "/images/PUMPevmLogo(1)(1).png",
+    "light": "/images/resized-image.png",
+    "dark": "/images/resized-image.png",
     "href": "https://docs.pumpevm.fun/launchpad/overview"
   },
   "navbar": {
