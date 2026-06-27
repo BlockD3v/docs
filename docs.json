@@ -9,8 +9,8 @@
     "dark": "#1d9957"
   },
   "favicon": {
-    "light": "/images/PUMPevmLogo(1).png",
-    "dark": "/images/PUMPevmLogo(1).png"
+    "light": "/images/PUMPevmLogo(1)(1).png",
+    "dark": "/images/PUMPevmLogo(1)(1).png"
   },
   "icons": {
     "library": "lucide"
@@ -94,9 +94,9 @@
     ]
   },
   "logo": {
-    "light": "/images/PUMPevmLogo(1).png",
-    "dark": "/images/PUMPevmLogo(1).png",
-    "href": "https://pumpevmfun.mintlify.app/introduction"
+    "light": "/images/PUMPevmLogo(1)(1).png",
+    "dark": "/images/PUMPevmLogo(1)(1).png",
+    "href": "https://docs.pumpevm.fun/introduction"
   },
   "navbar": {
     "links": [
